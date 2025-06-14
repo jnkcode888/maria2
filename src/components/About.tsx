@@ -18,7 +18,7 @@ export function About() {
         }} className="md:w-1/2">
             <div className="relative">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden mx-auto border-4 border-white/20 relative z-10">
-                <img src="https://images.unsplash.com/photo-1617069470302-9b5592c80f66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Maria" className="w-full h-full object-cover" />
+                <img src="/images/maria.png" alt="Maria" className="w-full h-full object-cover" />
               </div>
               <div className="absolute inset-0 bg-gradient-to-r from-pink-500/30 to-purple-600/30 rounded-full blur-3xl w-64 h-64 md:w-80 md:h-80 mx-auto animate-pulse-slow"></div>
             </div>

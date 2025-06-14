@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 const brands = [{
   id: 1,
   name: 'Garnier',
-  logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Garnier_logo.svg/1280px-Garnier_logo.svg.png',
+  logo: '/images/garnier.png',
   color: 'from-green-400 to-green-600'
 }, {
   id: 2,
-  name: 'HMD Kenya',
-  logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGdHJC6mZTrKHXQ0QVLFvw5pP_uE-R7WJnpg&usqp=CAU',
+  name: 'HMD. Kenya',
+  logo: '/images/hmd.png',
   color: 'from-blue-400 to-blue-600'
 }, {
   id: 3,
@@ -18,7 +18,7 @@ const brands = [{
 }, {
   id: 4,
   name: 'Dentsu',
-  logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Dentsu_logo.svg/1280px-Dentsu_logo.svg.png',
+  logo: '/images/dentsu.png',
   color: 'from-red-400 to-red-600'
 }];
 // Helper function to safely extract color values
@@ -82,7 +82,7 @@ export function Brands() {
               background: `linear-gradient(to bottom right, ${fromColor}, ${toColor})`
             }}></div>
                 <div className="h-32 md:h-40 flex items-center justify-center p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-xl transition-all duration-300 hover:border-white/30">
-                  <img src={brand.logo} alt={brand.name} className="max-h-full max-w-full object-contain filter brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+                  <img src={brand.logo} alt={brand.name} className="max-h-full max-w-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </motion.div>;
         })}

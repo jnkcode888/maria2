@@ -6,6 +6,8 @@ import { Brands } from './components/Brands';
 import { Contact } from './components/Contact';
 import { AnimatePresence } from 'framer-motion';
 import { ParticleBackground } from './components/3D/ParticleBackground';
+import { Navbar } from './components/Navbar';
+
 export function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -39,6 +41,7 @@ export function App() {
       <div className="relative w-full min-h-screen bg-gradient-to-br from-slate-900 to-purple-900 text-white overflow-hidden">
         <ParticleBackground />
         <div className="relative z-10">
+          <Navbar />
           <Hero />
           <About />
           <ContentHighlights />

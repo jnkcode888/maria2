@@ -122,7 +122,7 @@ export function Hero() {
       renderer.dispose();
     };
   }, []);
-  return <div ref={containerRef} className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
+  return <div id="home" ref={containerRef} className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
       <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />
       <div className="relative z-10 text-center px-4 max-w-4xl">
         <motion.div initial={{
