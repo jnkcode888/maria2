@@ -70,6 +70,12 @@ const contentCategories = [{
 export function ContentHighlights() {
   const [activeCategory, setActiveCategory] = useState('skincare');
   const activeContent = contentCategories.find(cat => cat.id === activeCategory);
+  
+  const handleVideoClick = (url: string, title: string) => {
+    console.log(`Opening TikTok video: ${title} at ${url}`);
+    window.open(url, '_blank');
+  };
+  
   return <section id="content" className="py-20 relative">
       <div className="container mx-auto px-4">
         <motion.div initial={{
@@ -121,7 +127,7 @@ export function ContentHighlights() {
             }} className="group">
               <div className="relative overflow-hidden rounded-xl backdrop-blur-md bg-white/5 border border-white/10 h-full">
                 {activeCategory === 'skincare' && index === 0 ? (
-                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => window.open('https://www.tiktok.com/@justmaria028/video/7370949326459243781', '_blank')}>
+                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => handleVideoClick('https://www.tiktok.com/@justmaria028/video/7370949326459243781', 'Soft Hands Tips')}>
                     <div className="w-full h-full bg-gradient-to-br from-pink-500/20 to-purple-600/20 flex items-center justify-center">
                       <div className="text-center">
                         <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -130,13 +136,13 @@ export function ContentHighlights() {
                           </svg>
                         </div>
                         <p className="text-white text-sm font-medium">Soft Hands Tips</p>
-                        <p className="text-white/70 text-xs">Click to watch on TikTok</p>
+                        <p className="text-white/70 text-xs">Click to open on TikTok ↗</p>
                       </div>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ) : activeCategory === 'skincare' && index === 1 ? (
-                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => window.open('https://www.tiktok.com/@justmaria028/video/7525740579364359480', '_blank')}>
+                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => handleVideoClick('https://www.tiktok.com/@justmaria028/video/7525740579364359480', 'Skincare Unboxing')}>
                     <div className="w-full h-full bg-gradient-to-br from-green-500/20 to-blue-600/20 flex items-center justify-center">
                       <div className="text-center">
                         <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -145,13 +151,13 @@ export function ContentHighlights() {
                           </svg>
                         </div>
                         <p className="text-white text-sm font-medium">Skincare Unboxing</p>
-                        <p className="text-white/70 text-xs">Click to watch on TikTok</p>
+                        <p className="text-white/70 text-xs">Click to open on TikTok ↗</p>
                       </div>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ) : activeCategory === 'skincare' && index === 2 ? (
-                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => window.open('https://www.tiktok.com/@justmaria028/video/7524622559892049158', '_blank')}>
+                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => handleVideoClick('https://www.tiktok.com/@justmaria028/video/7524622559892049158', 'Skincare Playlist')}>
                     <div className="w-full h-full bg-gradient-to-br from-purple-500/20 to-pink-600/20 flex items-center justify-center">
                       <div className="text-center">
                         <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -160,13 +166,13 @@ export function ContentHighlights() {
                           </svg>
                         </div>
                         <p className="text-white text-sm font-medium">Skincare Playlist</p>
-                        <p className="text-white/70 text-xs">Click to watch on TikTok</p>
+                        <p className="text-white/70 text-xs">Click to open on TikTok ↗</p>
                       </div>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ) : activeCategory === 'beauty' && index === 0 ? (
-                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => window.open('https://www.tiktok.com/@justmaria028/video/7522783349123943685', '_blank')}>
+                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => handleVideoClick('https://www.tiktok.com/@justmaria028/video/7522783349123943685', 'Black Girl Hair Magic')}>
                     <div className="w-full h-full bg-gradient-to-br from-yellow-500/20 to-orange-600/20 flex items-center justify-center">
                       <div className="text-center">
                         <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -175,13 +181,13 @@ export function ContentHighlights() {
                           </svg>
                         </div>
                         <p className="text-white text-sm font-medium">Black Girl Hair Magic</p>
-                        <p className="text-white/70 text-xs">Click to watch on TikTok</p>
+                        <p className="text-white/70 text-xs">Click to open on TikTok ↗</p>
                       </div>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ) : activeCategory === 'beauty' && index === 1 ? (
-                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => window.open('https://www.tiktok.com/@justmaria028/video/7523181428033490182', '_blank')}>
+                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => handleVideoClick('https://www.tiktok.com/@justmaria028/video/7523181428033490182', 'Statement Earrings Haul')}>
                     <div className="w-full h-full bg-gradient-to-br from-pink-500/20 to-red-600/20 flex items-center justify-center">
                       <div className="text-center">
                         <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -190,13 +196,13 @@ export function ContentHighlights() {
                           </svg>
                         </div>
                         <p className="text-white text-sm font-medium">Statement Earrings Haul</p>
-                        <p className="text-white/70 text-xs">Click to watch on TikTok</p>
+                        <p className="text-white/70 text-xs">Click to open on TikTok ↗</p>
                       </div>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ) : activeCategory === 'beauty' && index === 2 ? (
-                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => window.open('https://www.tiktok.com/@justmaria028/video/7523490762479160581', '_blank')}>
+                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => handleVideoClick('https://www.tiktok.com/@justmaria028/video/7523490762479160581', 'Dark Spots Skincare Journey')}>
                     <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-cyan-600/20 flex items-center justify-center">
                       <div className="text-center">
                         <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
@@ -205,7 +211,7 @@ export function ContentHighlights() {
                           </svg>
                         </div>
                         <p className="text-white text-sm font-medium">Dark Spots Skincare Journey</p>
-                        <p className="text-white/70 text-xs">Click to watch on TikTok</p>
+                        <p className="text-white/70 text-xs">Click to open on TikTok ↗</p>
                       </div>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
