@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 const contentCategories = [{
   id: 'skincare',
@@ -70,15 +70,6 @@ const contentCategories = [{
 export function ContentHighlights() {
   const [activeCategory, setActiveCategory] = useState('skincare');
   const activeContent = contentCategories.find(cat => cat.id === activeCategory);
-  useEffect(() => {
-    // Dynamically load TikTok embed script if not present
-    if (!document.querySelector('script[src="https://www.tiktok.com/embed.js"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://www.tiktok.com/embed.js';
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  }, []);
   return <section id="content" className="py-20 relative">
       <div className="container mx-auto px-4">
         <motion.div initial={{
@@ -130,52 +121,94 @@ export function ContentHighlights() {
             }} className="group">
               <div className="relative overflow-hidden rounded-xl backdrop-blur-md bg-white/5 border border-white/10 h-full">
                 {activeCategory === 'skincare' && index === 0 ? (
-                  <div className="h-64 overflow-hidden flex items-center justify-center bg-black">
-                    <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@justmaria028/video/7370949326459243781" data-video-id="7370949326459243781" style={{maxWidth: 605, minWidth: 325}}>
-                      <section>
-                        <a target="_blank" title="@justmaria028" href="https://www.tiktok.com/@justmaria028?refer=embed">@justmaria028</a> Soft Hands Hand.This is my tip for having soft hands. I apply @niceandlovely_ea Glowtion or the whipped Body Butter from @Wisha Beauty & Cosmetics . What hand cream do you use? <a title="skincaregirlies" target="_blank" href="https://www.tiktok.com/tag/skincaregirlies?refer=embed">#skincaregirlies</a>  <a title="skincare" target="_blank" href="https://www.tiktok.com/tag/skincare?refer=embed">#skincare</a>  <a title="skinacaretips" target="_blank" href="https://www.tiktok.com/tag/skinacaretips?refer=embed">#skinacaretips</a>  <a title="glowingskin" target="_blank" href="https://www.tiktok.com/tag/glowingskin?refer=embed">#glowingskin</a>  <a title="glowingskincare" target="_blank" href="https://www.tiktok.com/tag/glowingskincare?refer=embed">#glowingskincare</a> <a target="_blank" title="♬ original sound - Maria's Circle" href="https://www.tiktok.com/music/original-sound-7370949351253609222?refer=embed">♬ original sound - Maria's Circle</a>
-                      </section>
-                    </blockquote>
+                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => window.open('https://www.tiktok.com/@justmaria028/video/7370949326459243781', '_blank')}>
+                    <div className="w-full h-full bg-gradient-to-br from-pink-500/20 to-purple-600/20 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                        <p className="text-white text-sm font-medium">Soft Hands Tips</p>
+                        <p className="text-white/70 text-xs">Click to watch on TikTok</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ) : activeCategory === 'skincare' && index === 1 ? (
-                  <div className="h-64 overflow-hidden flex items-center justify-center bg-black">
-                    <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@justmaria028/video/7525740579364359480" data-video-id="7525740579364359480" style={{maxWidth: 605, minWidth: 325}}>
-                      <section>
-                        <a target="_blank" title="@justmaria028" href="https://www.tiktok.com/@justmaria028?refer=embed">@justmaria028</a> skincare and hair products unboxing @SOAPEX  skincare and hair haircare products <a title="skincareproduct" target="_blank" href="https://www.tiktok.com/tag/skincareproduct?refer=embed">#skincareproduct</a>  <a title="skincareproductsthatwork" target="_blank" href="https://www.tiktok.com/tag/skincareproductsthatwork?refer=embed">#skincareproductsthatwork</a>  <a title="skincareproductsmusthave" target="_blank" href="https://www.tiktok.com/tag/skincareproductsmusthave?refer=embed">#skincareproductsmusthave</a>  <a title="hairshampoo" target="_blank" href="https://www.tiktok.com/tag/hairshampoo?refer=embed">#hairshampoo</a>  <a title="mariascircle" target="_blank" href="https://www.tiktok.com/tag/mariascircle?refer=embed">#mariascircle</a> <a target="_blank" title="♬ original sound - Maria's Circle" href="https://www.tiktok.com/music/original-sound-7525740590001621816?refer=embed">♬ original sound - Maria's Circle</a>
-                      </section>
-                    </blockquote>
+                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => window.open('https://www.tiktok.com/@justmaria028/video/7525740579364359480', '_blank')}>
+                    <div className="w-full h-full bg-gradient-to-br from-green-500/20 to-blue-600/20 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                        <p className="text-white text-sm font-medium">Skincare Unboxing</p>
+                        <p className="text-white/70 text-xs">Click to watch on TikTok</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ) : activeCategory === 'skincare' && index === 2 ? (
-                  <div className="h-64 overflow-hidden flex items-center justify-center bg-black">
-                    <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@justmaria028/video/7524622559892049158" data-video-id="7524622559892049158" style={{maxWidth: 605, minWidth: 325}}>
-                      <section>
-                        <a target="_blank" title="@justmaria028" href="https://www.tiktok.com/@justmaria028?refer=embed">@justmaria028</a> Skincare playlist&gt;&gt;&gt; With @Nathaniel Bassey @Nathaniel Bassey -Official  <a title="skincareroutines" target="_blank" href="https://www.tiktok.com/tag/skincareroutines?refer=embed">#skincareroutines</a>  <a title="skincareviral" target="_blank" href="https://www.tiktok.com/tag/skincareviral?refer=embed">#skincareviral</a>  <a title="nathanielbassey" target="_blank" href="https://www.tiktok.com/tag/nathanielbassey?refer=embed">#nathanielbassey</a>  <a title="hallelujahchallenge" target="_blank" href="https://www.tiktok.com/tag/hallelujahchallenge?refer=embed">#hallelujahchallenge</a>  <a title="mariascircle" target="_blank" href="https://www.tiktok.com/tag/mariascircle?refer=embed">#mariascircle</a> <a target="_blank" title="♬ original sound - Maria's Circle" href="https://www.tiktok.com/music/original-sound-7524622577025796870?refer=embed">♬ original sound - Maria's Circle</a>
-                      </section>
-                    </blockquote>
+                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => window.open('https://www.tiktok.com/@justmaria028/video/7524622559892049158', '_blank')}>
+                    <div className="w-full h-full bg-gradient-to-br from-purple-500/20 to-pink-600/20 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                        <p className="text-white text-sm font-medium">Skincare Playlist</p>
+                        <p className="text-white/70 text-xs">Click to watch on TikTok</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ) : activeCategory === 'beauty' && index === 0 ? (
-                  <div className="h-64 overflow-hidden flex items-center justify-center bg-black">
-                    <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@justmaria028/video/7522783349123943685" data-video-id="7522783349123943685" style={{maxWidth: 605, minWidth: 325}}>
-                      <section>
-                        <a target="_blank" title="@justmaria028" href="https://www.tiktok.com/@justmaria028?refer=embed">@justmaria028</a> Black girl hair is magic  <a title="blackgirlhairstyles" target="_blank" href="https://www.tiktok.com/tag/blackgirlhairstyles?refer=embed">#blackgirlhairstyles</a>  <a title="blackgirlhair" target="_blank" href="https://www.tiktok.com/tag/blackgirlhair?refer=embed">#blackgirlhair</a>  <a title="hairtok" target="_blank" href="https://www.tiktok.com/tag/hairtok?refer=embed">#hairtok</a>  <a title="mariascircle" target="_blank" href="https://www.tiktok.com/tag/mariascircle?refer=embed">#mariascircle</a> <a target="_blank" title="♬ A Black Girl and Her Switch Up - Jaylene Clark Owens" href="https://www.tiktok.com/music/A-Black-Girl-and-Her-Switch-Up-7164272565064730625?refer=embed">♬ A Black Girl and Her Switch Up - Jaylene Clark Owens</a>
-                      </section>
-                    </blockquote>
+                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => window.open('https://www.tiktok.com/@justmaria028/video/7522783349123943685', '_blank')}>
+                    <div className="w-full h-full bg-gradient-to-br from-yellow-500/20 to-orange-600/20 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                        <p className="text-white text-sm font-medium">Black Girl Hair Magic</p>
+                        <p className="text-white/70 text-xs">Click to watch on TikTok</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ) : activeCategory === 'beauty' && index === 1 ? (
-                  <div className="h-64 overflow-hidden flex items-center justify-center bg-black">
-                    <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@justmaria028/video/7523181428033490182" data-video-id="7523181428033490182" style={{maxWidth: 605, minWidth: 325}}>
-                      <section>
-                        <a target="_blank" title="@justmaria028" href="https://www.tiktok.com/@justmaria028?refer=embed">@justmaria028</a> Statement earrings haul  <a title="statementearrings" target="_blank" href="https://www.tiktok.com/tag/statementearrings?refer=embed">#statementearrings</a>  <a title="earrings" target="_blank" href="https://www.tiktok.com/tag/earrings?refer=embed">#earrings</a>  <a title="earringstack" target="_blank" href="https://www.tiktok.com/tag/earringstack?refer=embed">#earringstack</a>  <a title="mariascircle" target="_blank" href="https://www.tiktok.com/tag/mariascircle?refer=embed">#mariascircle</a> <a target="_blank" title="♬ original sound - Maria's Circle" href="https://www.tiktok.com/music/original-sound-7523181455082867462?refer=embed">♬ original sound - Maria's Circle</a>
-                      </section>
-                    </blockquote>
+                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => window.open('https://www.tiktok.com/@justmaria028/video/7523181428033490182', '_blank')}>
+                    <div className="w-full h-full bg-gradient-to-br from-pink-500/20 to-red-600/20 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                        <p className="text-white text-sm font-medium">Statement Earrings Haul</p>
+                        <p className="text-white/70 text-xs">Click to watch on TikTok</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ) : activeCategory === 'beauty' && index === 2 ? (
-                  <div className="h-64 overflow-hidden flex items-center justify-center bg-black">
-                    <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@justmaria028/video/7523490762479160581" data-video-id="7523490762479160581" style={{maxWidth: 605, minWidth: 325}}>
-                      <section>
-                        <a target="_blank" title="@justmaria028" href="https://www.tiktok.com/@justmaria028?refer=embed">@justmaria028</a> Dark spots skincare. I am on a skincare journey to clear my dark spots  @Human Mobile Devices is going to be my buddy throughout this journey.  let&#39;s track it together. <a title="darkspots" target="_blank" href="https://www.tiktok.com/tag/darkspots?refer=embed">#darkspots</a>  <a title="hyperpigmentation" target="_blank" href="https://www.tiktok.com/tag/hyperpigmentation?refer=embed">#hyperpigmentation</a>  <a title="hyperpigmentationtreatment" target="_blank" href="https://www.tiktok.com/tag/hyperpigmentationtreatment?refer=embed">#hyperpigmentationtreatment</a> <a title="hmdkenya" target="_blank" href="https://www.tiktok.com/tag/hmdkenya?refer=embed">#hmdkenya</a>  <a title="hmdxdsoi" target="_blank" href="https://www.tiktok.com/tag/hmdxdsoi?refer=embed">#hmdxdsoi</a>  <a title="hmdskyline" target="_blank" href="https://www.tiktok.com/tag/hmdskyline?refer=embed">#hmdskyline</a>  <a title="humanmobiledevices" target="_blank" href="https://www.tiktok.com/tag/humanmobiledevices?refer=embed">#humanmobiledevices</a>  <a title="mariascircle" target="_blank" href="https://www.tiktok.com/tag/mariascircle?refer=embed">#mariascircle</a> <a target="_blank" title="♬ original sound - Maria's Circle" href="https://www.tiktok.com/music/original-sound-7523490728371440440?refer=embed">♬ original sound - Maria's Circle</a>
-                      </section>
-                    </blockquote>
+                  <div className="h-64 overflow-hidden rounded-xl relative group cursor-pointer" onClick={() => window.open('https://www.tiktok.com/@justmaria028/video/7523490762479160581', '_blank')}>
+                    <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-cyan-600/20 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                        <p className="text-white text-sm font-medium">Dark Spots Skincare Journey</p>
+                        <p className="text-white/70 text-xs">Click to watch on TikTok</p>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ) : (
                   <div className="h-64 overflow-hidden">
