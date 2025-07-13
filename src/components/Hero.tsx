@@ -125,17 +125,43 @@ export function Hero() {
   return <div id="home" ref={containerRef} className="relative w-full h-screen flex flex-col justify-center items-center overflow-hidden">
       <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />
       <div className="relative z-10 text-center px-4 max-w-4xl">
-        <motion.div initial={{
-        opacity: 0,
-        y: 30
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.8
-      }} className="mb-6">
-          <h1 className="font-serif text-5xl md:text-7xl font-light text-white mb-4">
-            <span className="font-normal">Maria's</span> Circle
+        {/* 3D/Column Staggered Animated Heading */}
+        <motion.div
+          className="mb-6"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: { transition: { staggerChildren: 0.08 } },
+            hidden: {}
+          }}
+        >
+          <h1 className="font-serif text-5xl md:text-7xl font-light text-white mb-4 flex justify-center gap-1">
+            {[..."Maria's"].map((char, i) => (
+              <motion.span
+                key={i}
+                variants={{
+                  hidden: { opacity: 0, y: 80, rotateX: 90 },
+                  visible: { opacity: 1, y: 0, rotateX: 0, transition: { type: 'spring', stiffness: 400, damping: 20 } }
+                }}
+                style={{ display: 'inline-block', perspective: 400 }}
+              >
+                <span className="font-normal drop-shadow-lg" style={{ display: 'inline-block' }}>{char === ' ' ? '\u00A0' : char}</span>
+              </motion.span>
+            ))}
+            {/* Space between words */}
+            <span style={{ width: 16, display: 'inline-block' }}></span>
+            {[...'Circle'].map((char, i) => (
+              <motion.span
+                key={i + 100}
+                variants={{
+                  hidden: { opacity: 0, y: 80, rotateX: 90 },
+                  visible: { opacity: 1, y: 0, rotateX: 0, transition: { type: 'spring', stiffness: 400, damping: 20 } }
+                }}
+                style={{ display: 'inline-block', perspective: 400 }}
+              >
+                <span className="font-normal drop-shadow-lg" style={{ display: 'inline-block' }}>{char}</span>
+              </motion.span>
+            ))}
           </h1>
         </motion.div>
         <motion.div initial={{
@@ -160,9 +186,16 @@ export function Hero() {
         duration: 0.8,
         delay: 0.6
       }} className="flex flex-wrap justify-center gap-4">
-          <Button variant="primary">Watch My Reels</Button>
-          <Button variant="secondary">View TikTok</Button>
-          <Button variant="outline">Email Me</Button>
+          <a href="https://www.instagram.com/marias_circle_/" target="_blank" rel="noopener noreferrer" className="relative flex items-center justify-center rounded-full font-medium tracking-wide transition-all duration-300 overflow-hidden px-6 py-2.5 text-base bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:shadow-lg hover:shadow-pink-500/25 hover:from-pink-600 hover:to-purple-700">
+            <span className="absolute inset-0 bg-gradient-to-r from-pink-300/20 to-purple-400/20 blur-xl animate-pulse"></span>
+            <span className="relative z-10">Watch My Reels</span>
+          </a>
+          <a href="https://www.tiktok.com/@justmaria028?lang=en" target="_blank" rel="noopener noreferrer" className="relative flex items-center justify-center rounded-full font-medium tracking-wide transition-all duration-300 overflow-hidden px-6 py-2.5 text-base bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white/15 hover:shadow-lg hover:shadow-white/10">
+            <span className="relative z-10">View TikTok</span>
+          </a>
+          <a href="mailto:justmaria028@gmail.com" className="relative flex items-center justify-center rounded-full font-medium tracking-wide transition-all duration-300 overflow-hidden px-6 py-2.5 text-base bg-transparent border border-white/30 text-white hover:border-white/70 hover:bg-white/5">
+            <span className="relative z-10">Email Me</span>
+          </a>
         </motion.div>
       </div>
       <motion.div initial={{

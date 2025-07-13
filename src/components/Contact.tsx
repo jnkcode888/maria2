@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from './UI/Button';
+import emailjs from '@emailjs/browser';
 export function Contact() {
   const [formState, setFormState] = useState({
     name: '',
@@ -8,22 +9,37 @@ export function Contact() {
     message: '',
     submitted: false
   });
+  const [error, setError] = useState<string | null>(null);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real implementation, you'd send the form data to a backend
-    setFormState(prev => ({
-      ...prev,
-      submitted: true
-    }));
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setFormState({
-        name: '',
-        email: '',
-        message: '',
-        submitted: false
-      });
-    }, 3000);
+    setError(null);
+    emailjs.send(
+      'YOUR_SERVICE_ID', // replace with your EmailJS service ID
+      'YOUR_TEMPLATE_ID', // replace with your EmailJS template ID
+      {
+        from_name: formState.name,
+        from_email: formState.email,
+        message: formState.message,
+      },
+      'YOUR_USER_ID' // replace with your EmailJS user/public key
+    )
+    .then(() => {
+      setFormState(prev => ({
+        ...prev,
+        submitted: true
+      }));
+      setTimeout(() => {
+        setFormState({
+          name: '',
+          email: '',
+          message: '',
+          submitted: false
+        });
+      }, 3000);
+    })
+    .catch((err: unknown) => {
+      setError('Failed to send message. Please try again later.');
+    });
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {
@@ -74,7 +90,7 @@ export function Contact() {
                 Follow <span className="font-normal">Maria's Circle</span>
               </h3>
               <div className="space-y-6">
-                <a href="#" className="flex items-center gap-4 group">
+                <a href="https://www.instagram.com/marias_circle_/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
@@ -91,7 +107,7 @@ export function Contact() {
                     </p>
                   </div>
                 </a>
-                <a href="#" className="flex items-center gap-4 group">
+                <a href="https://www.tiktok.com/@justmaria028?lang=en" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M15 11v4a5 5 0 0 1-5 5H6.5a3.5 3.5 0 0 1 0-7H9"></path>
@@ -105,7 +121,7 @@ export function Contact() {
                     <p className="text-sm text-purple-200/70">@justmaria028</p>
                   </div>
                 </a>
-                <a href="#" className="flex items-center gap-4 group">
+                <a href="mailto:justmaria028@gmail.com" className="flex items-center gap-4 group">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <rect width="20" height="16" x="2" y="4" rx="2"></rect>
@@ -117,7 +133,7 @@ export function Contact() {
                       Email
                     </p>
                     <p className="text-sm text-purple-200/70">
-                      hello@mariascircle.com
+                      justmaria028@gmail.com
                     </p>
                   </div>
                 </a>
@@ -156,6 +172,7 @@ export function Contact() {
                     Thanks for reaching out. I'll get back to you soon!
                   </p>
                 </motion.div> : <form onSubmit={handleSubmit} className="space-y-6">
+                  {error && <div className="text-red-400 text-sm mb-2">{error}</div>}
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-purple-200 mb-1">
                       Your Name

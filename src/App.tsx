@@ -17,25 +17,42 @@ export function App() {
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
+  const text = "Maria's Circle";
+  const letters = text.split("");
+  const [displayed, setDisplayed] = useState(Array(letters.length).fill(""));
+  useEffect(() => {
+    if (!loading) return;
+    let frame = 0;
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=~";
+    function randomChar() {
+      return chars[Math.floor(Math.random() * chars.length)];
+    }
+    const interval: NodeJS.Timeout = setInterval(() => {
+      setDisplayed(prev =>
+        prev.map((char, i) => {
+          // Each letter settles after a delay
+          if (frame < 10 + i * 3) {
+            return randomChar();
+          } else {
+            return letters[i];
+          }
+        })
+      );
+      frame++;
+      if (frame > 10 + letters.length * 3) {
+        clearInterval(interval);
+      }
+    }, 40);
+    return () => clearInterval(interval);
+  }, [loading]);
   if (loading) {
     return <div className="flex w-full h-screen justify-center items-center bg-gradient-to-br from-slate-900 to-purple-900">
-        <div className="text-3xl text-white font-light tracking-widest">
-          <span className="inline-block animate-pulse">M</span>
-          <span className="inline-block animate-pulse delay-100">a</span>
-          <span className="inline-block animate-pulse delay-200">r</span>
-          <span className="inline-block animate-pulse delay-300">i</span>
-          <span className="inline-block animate-pulse delay-400">a</span>
-          <span className="inline-block animate-pulse delay-500">'</span>
-          <span className="inline-block animate-pulse delay-600">s</span>
-          <span className="inline-block animate-pulse delay-700"> </span>
-          <span className="inline-block animate-pulse delay-800">C</span>
-          <span className="inline-block animate-pulse delay-900">i</span>
-          <span className="inline-block animate-pulse delay-1000">r</span>
-          <span className="inline-block animate-pulse delay-1100">c</span>
-          <span className="inline-block animate-pulse delay-1200">l</span>
-          <span className="inline-block animate-pulse delay-1300">e</span>
-        </div>
-      </div>;
+      <div className="text-3xl md:text-5xl text-white font-light tracking-widest flex gap-1">
+        {displayed.map((char, i) => (
+          <span key={i} className="inline-block" style={{ minWidth: '1ch' }}>{char === ' ' ? '\u00A0' : char}</span>
+        ))}
+      </div>
+    </div>;
   }
   return <AnimatePresence>
       <div className="relative w-full min-h-screen bg-gradient-to-br from-slate-900 to-purple-900 text-white overflow-hidden">
