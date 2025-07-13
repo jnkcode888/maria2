@@ -288,7 +288,7 @@ export function ContentHighlights() {
               }
               // For skincare TikTok cards, show image with play button overlay, and make the whole card a link
               if (activeCategory === 'skincare' && customBgImg) {
-                return (
+              return (
                   <a
                     key={item.id}
                     href={tiktokData.url}
@@ -307,26 +307,26 @@ export function ContentHighlights() {
                     <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
                       <div className="w-20 h-20 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <svg className="w-10 h-10 text-white drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z"/>
-                        </svg>
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
                       </div>
                     </div>
                     {/* Card info overlay at the bottom */}
                     <div className="absolute bottom-0 left-0 right-0 p-6 z-20 bg-gradient-to-t from-black/60 via-transparent to-transparent">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-xs font-medium px-3 py-1 rounded-full bg-white/20 backdrop-blur-md">
-                          {item.platform}
-                        </span>
-                        <span className="text-xs font-medium text-purple-200">
-                          {item.views} views
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-medium text-white mb-2">
-                        {item.title}
-                      </h3>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-xs font-medium px-3 py-1 rounded-full bg-white/20 backdrop-blur-md">
+                        {item.platform}
+                      </span>
+                      <span className="text-xs font-medium text-purple-200">
+                        {item.views} views
+                      </span>
                     </div>
+                    <h3 className="text-xl font-medium text-white mb-2">
+                      {item.title}
+                    </h3>
+                  </div>
                   </a>
-                );
+              );
               }
             }
             // Regular content card
